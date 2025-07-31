@@ -30,6 +30,10 @@ coverage/
 # Uploaded files (avatars, etc.)
 server/uploads/
 
+# Large binary files
+server-monitoring/grafana-v10.2.3/bin/
+server-monitoring/prometheus-2.48.0.darwin-amd64/
+
 # SSL certificates
 *.pem
 *.key
