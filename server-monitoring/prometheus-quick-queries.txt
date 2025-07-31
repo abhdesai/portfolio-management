@@ -1,0 +1,97 @@
+🚀 PORTFOLIO MANAGEMENT - PROMETHEUS QUICK QUERIES
+==================================================
+
+📊 REQUEST METRICS
+------------------
+Total Request Rate:
+portfolio:http_requests_total:rate5m
+
+Request Rate by Route:
+portfolio:http_requests_by_route:rate5m
+
+Request Rate by Method:
+portfolio:http_requests_by_method:rate5m
+
+Request Rate by Status:
+portfolio:http_requests_by_status:rate5m
+
+⚡ RESPONSE TIME METRICS
+-----------------------
+Average Response Time (ms):
+portfolio:http_request_duration_avg_ms
+
+95th Percentile Response Time (ms):
+portfolio:http_request_duration_p95_ms
+
+99th Percentile Response Time (ms):
+portfolio:http_request_duration_p99_ms
+
+❌ ERROR METRICS
+----------------
+5xx Error Rate (%):
+portfolio:http_errors_5xx_percent
+
+4xx Error Rate (%):
+portfolio:http_errors_4xx_percent
+
+Success Rate (%):
+portfolio:http_success_rate_percent
+
+💾 SYSTEM RESOURCES
+-------------------
+Memory Usage (MB):
+portfolio:memory_usage_mb
+
+CPU Usage Rate:
+portfolio:cpu_usage_rate
+
+Event Loop Lag (ms):
+portfolio:eventloop_lag_ms
+
+Process Uptime (seconds):
+portfolio:process_uptime_seconds
+
+🟢 NODE.JS METRICS
+------------------
+Active Handles:
+portfolio:nodejs_active_handles
+
+Active Requests:
+portfolio:nodejs_active_requests
+
+Heap Memory Used (MB):
+portfolio:nodejs_heap_used_mb
+
+🔗 QUICK ACCESS LINKS
+---------------------
+Prometheus UI: http://localhost:9090/graph
+Grafana: http://localhost:9091
+Portfolio App: http://localhost:6050
+Raw Metrics: http://localhost:6050/metrics
+
+📋 HOW TO USE
+-------------
+1. Go to http://localhost:9090/graph
+2. Copy any query above (e.g., "portfolio:http_requests_total:rate5m")
+3. Paste in the expression box
+4. Click "Execute" to see current value
+5. Click "Graph" to see time series
+6. Bookmark useful queries for quick access
+
+🎯 RECOMMENDED MONITORING
+-------------------------
+Daily Check:
+- portfolio:http_requests_total:rate5m
+- portfolio:http_request_duration_avg_ms
+- portfolio:memory_usage_mb
+- portfolio:http_success_rate_percent
+
+Performance Issues:
+- portfolio:http_request_duration_p95_ms
+- portfolio:eventloop_lag_ms
+- portfolio:http_errors_5xx_percent
+
+System Health:
+- portfolio:process_uptime_seconds
+- portfolio:nodejs_active_handles
+- portfolio:nodejs_heap_used_mb 

@@ -1,0 +1,29 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+rule_files:
+  - "portfolio-rules.yml"
+
+scrape_configs:
+  - job_name: 'portfolio-backend-http'
+    static_configs:
+      - targets: ['localhost:6050']
+    metrics_path: '/metrics'
+    scrape_interval: 10s
+    scrape_timeout: 5s
+    scheme: 'http'
+
+  - job_name: 'portfolio-backend-https'
+    static_configs:
+      - targets: ['localhost:6051']
+    metrics_path: '/metrics'
+    scrape_interval: 10s
+    scrape_timeout: 5s
+    scheme: 'https'
+    tls_config:
+      insecure_skip_verify: true  # For self-signed certificates
+
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090'] 

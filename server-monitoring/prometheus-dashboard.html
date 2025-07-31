@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Management - Prometheus Dashboard</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .metric-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-left: 4px solid #667eea;
+        }
+        .metric-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .metric-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        .metric-description {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        .prometheus-link {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+        .prometheus-link:hover {
+            background: #5a6fd8;
+        }
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        .status-healthy { background-color: #4caf50; }
+        .status-warning { background-color: #ff9800; }
+        .status-error { background-color: #f44336; }
+        .quick-links {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .quick-links h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .link-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        .link-item {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .link-item a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .link-item a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📊 Portfolio Management - Prometheus Dashboard</h1>
+        <p>Real-time monitoring and metrics for your application</p>
+    </div>
+
+    <div class="quick-links">
+        <h3>🔗 Quick Links</h3>
+        <div class="link-grid">
+            <div class="link-item">
+                <a href="http://localhost:9090" target="_blank">Prometheus UI</a>
+            </div>
+            <div class="link-item">
+                <a href="http://localhost:9091" target="_blank">Grafana Dashboards</a>
+            </div>
+            <div class="link-item">
+                <a href="http://localhost:6050" target="_blank">Portfolio App</a>
+            </div>
+            <div class="link-item">
+                <a href="http://localhost:6050/metrics" target="_blank">Raw Metrics</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="dashboard-grid">
+        <div class="metric-card">
+            <div class="metric-title">🚀 Request Rate</div>
+            <div class="metric-value">Loading...</div>
+            <div class="metric-description">Requests per second over the last 5 minutes</div>
+            <a href="http://localhost:9090/graph?g0.expr=sum(rate(http_requests_total{job=%22portfolio-backend%22}[5m]))&g0.tab=0" 
+               class="prometheus-link" target="_blank">View in Prometheus</a>
+        </div>
+
+        <div class="metric-card">
+            <div class="metric-title">⚡ Response Time</div>
+            <div class="metric-value">Loading...</div>
+            <div class="metric-description">Average response time in milliseconds</div>
+            <a href="http://localhost:9090/graph?g0.expr=rate(http_request_duration_seconds_sum{job=%22portfolio-backend%22}[5m])%20%2F%20rate(http_request_duration_seconds_count{job=%22portfolio-backend%22}[5m])%20*%201000&g0.tab=0" 
+               class="prometheus-link" target="_blank">View in Prometheus</a>
+        </div>
+
+        <div class="metric-card">
+            <div class="metric-title">💾 Memory Usage</div>
+            <div class="metric-value">Loading...</div>
+            <div class="metric-description">Current memory usage in bytes</div>
+            <a href="http://localhost:9090/graph?g0.expr=process_resident_memory_bytes{job=%22portfolio-backend%22}&g0.tab=0" 
+               class="prometheus-link" target="_blank">View in Prometheus</a>
+        </div>
+
+        <div class="metric-card">
+            <div class="metric-title">🔄 Event Loop Lag</div>
+            <div class="metric-value">Loading...</div>
+            <div class="metric-description">Node.js event loop lag in seconds</div>
+            <a href="http://localhost:9090/graph?g0.expr=nodejs_eventloop_lag_seconds{job=%22portfolio-backend%22}&g0.tab=0" 
+               class="prometheus-link" target="_blank">View in Prometheus</a>
+        </div>
+
+        <div class="metric-card">
+            <div class="metric-title">✅ Success Rate</div>
+            <div class="metric-value">Loading...</div>
+            <div class="metric-description">Percentage of successful requests (2xx)</div>
+            <a href="http://localhost:9090/graph?g0.expr=sum(rate(http_requests_total{job=%22portfolio-backend%22,status_code=~%222..%22}[5m]))%20%2F%20sum(rate(http_requests_total{job=%22portfolio-backend%22}[5m]))%20*%20100&g0.tab=0" 
+               class="prometheus-link" target="_blank">View in Prometheus</a>
+        </div>
+
+        <div class="metric-card">
+            <div class="metric-title">❌ Error Rate</div>
+            <div class="metric-value">Loading...</div>
+            <div class="metric-description">Percentage of error requests (4xx/5xx)</div>
+            <a href="http://localhost:9090/graph?g0.expr=sum(rate(http_requests_total{job=%22portfolio-backend%22,status_code=~%224..%7C5..%22}[5m]))%20%2F%20sum(rate(http_requests_total{job=%22portfolio-backend%22}[5m]))%20*%20100&g0.tab=0" 
+               class="prometheus-link" target="_blank">View in Prometheus</a>
+        </div>
+    </div>
+
+    <div class="metric-card">
+        <div class="metric-title">📈 Popular Queries</div>
+        <div class="metric-description">Quick access to common Prometheus queries</div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px;">
+            <div>
+                <strong>Request Rate by Route:</strong><br>
+                <a href="http://localhost:9090/graph?g0.expr=sum%20by%20(route)%20(rate(http_requests_total{job=%22portfolio-backend%22}[5m]))&g0.tab=0" 
+                   class="prometheus-link" target="_blank">View Query</a>
+            </div>
+            <div>
+                <strong>Response Time Percentiles:</strong><br>
+                <a href="http://localhost:9090/graph?g0.expr=histogram_quantile(0.95,%20rate(http_request_duration_seconds_bucket{job=%22portfolio-backend%22}[5m]))%20*%201000&g0.tab=0" 
+                   class="prometheus-link" target="_blank">View Query</a>
+            </div>
+            <div>
+                <strong>Memory Usage Over Time:</strong><br>
+                <a href="http://localhost:9090/graph?g0.expr=process_resident_memory_bytes{job=%22portfolio-backend%22}&g0.tab=0" 
+                   class="prometheus-link" target="_blank">View Query</a>
+            </div>
+            <div>
+                <strong>CPU Usage:</strong><br>
+                <a href="http://localhost:9090/graph?g0.expr=rate(process_cpu_seconds_total{job=%22portfolio-backend%22}[5m])&g0.tab=0" 
+                   class="prometheus-link" target="_blank">View Query</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple function to fetch and display metrics
+        async function fetchMetric(query, elementId) {
+            try {
+                const response = await fetch(`http://localhost:9090/api/v1/query?query=${encodeURIComponent(query)}`);
+                const data = await response.json();
+                
+                if (data.status === 'success' && data.data.result.length > 0) {
+                    const value = parseFloat(data.data.result[0].value[1]);
+                    const element = document.getElementById(elementId);
+                    
+                    if (elementId.includes('rate')) {
+                        element.textContent = value.toFixed(2) + ' req/s';
+                    } else if (elementId.includes('memory')) {
+                        element.textContent = (value / 1024 / 1024).toFixed(2) + ' MB';
+                    } else if (elementId.includes('time')) {
+                        element.textContent = value.toFixed(2) + ' ms';
+                    } else if (elementId.includes('lag')) {
+                        element.textContent = (value * 1000).toFixed(2) + ' ms';
+                    } else if (elementId.includes('success') || elementId.includes('error')) {
+                        element.textContent = value.toFixed(1) + '%';
+                    } else {
+                        element.textContent = value.toFixed(2);
+                    }
+                }
+            } catch (error) {
+                console.error('Error fetching metric:', error);
+            }
+        }
+
+        // Fetch metrics on page load
+        window.addEventListener('load', function() {
+            // Fetch initial metrics
+            fetchMetric('sum(rate(http_requests_total{job="portfolio-backend"}[5m]))', 'request-rate');
+            fetchMetric('rate(http_request_duration_seconds_sum{job="portfolio-backend"}[5m]) / rate(http_request_duration_seconds_count{job="portfolio-backend"}[5m]) * 1000', 'response-time');
+            fetchMetric('process_resident_memory_bytes{job="portfolio-backend"}', 'memory-usage');
+            fetchMetric('nodejs_eventloop_lag_seconds{job="portfolio-backend"}', 'event-loop-lag');
+            fetchMetric('sum(rate(http_requests_total{job="portfolio-backend",status_code=~"2.."}[5m])) / sum(rate(http_requests_total{job="portfolio-backend"}[5m])) * 100', 'success-rate');
+            fetchMetric('sum(rate(http_requests_total{job="portfolio-backend",status_code=~"4..|5.."}[5m])) / sum(rate(http_requests_total{job="portfolio-backend"}[5m])) * 100', 'error-rate');
+
+            // Refresh metrics every 30 seconds
+            setInterval(function() {
+                fetchMetric('sum(rate(http_requests_total{job="portfolio-backend"}[5m]))', 'request-rate');
+                fetchMetric('rate(http_request_duration_seconds_sum{job="portfolio-backend"}[5m]) / rate(http_request_duration_seconds_count{job="portfolio-backend"}[5m]) * 1000', 'response-time');
+                fetchMetric('process_resident_memory_bytes{job="portfolio-backend"}', 'memory-usage');
+                fetchMetric('nodejs_eventloop_lag_seconds{job="portfolio-backend"}', 'event-loop-lag');
+                fetchMetric('sum(rate(http_requests_total{job="portfolio-backend",status_code=~"2.."}[5m])) / sum(rate(http_requests_total{job="portfolio-backend"}[5m])) * 100', 'success-rate');
+                fetchMetric('sum(rate(http_requests_total{job="portfolio-backend",status_code=~"4..|5.."}[5m])) / sum(rate(http_requests_total{job="portfolio-backend"}[5m])) * 100', 'error-rate');
+            }, 30000);
+        });
+    </script>
+
+    <!-- Add IDs to metric values for JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.metric-card');
+            cards.forEach((card, index) => {
+                const valueDiv = card.querySelector('.metric-value');
+                if (valueDiv) {
+                    const titles = ['request-rate', 'response-time', 'memory-usage', 'event-loop-lag', 'success-rate', 'error-rate'];
+                    if (titles[index]) {
+                        valueDiv.id = titles[index];
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,58 @@
+groups:
+  - name: portfolio-backend
+    rules:
+      # Request Rate Rules
+      - record: portfolio:http_requests_total:rate5m
+        expr: sum(rate(http_requests_total{job="portfolio-backend"}[5m]))
+      
+      - record: portfolio:http_requests_by_route:rate5m
+        expr: sum by (route) (rate(http_requests_total{job="portfolio-backend"}[5m]))
+      
+      - record: portfolio:http_requests_by_method:rate5m
+        expr: sum by (method) (rate(http_requests_total{job="portfolio-backend"}[5m]))
+      
+      - record: portfolio:http_requests_by_status:rate5m
+        expr: sum by (status_code) (rate(http_requests_total{job="portfolio-backend"}[5m]))
+
+      # Response Time Rules
+      - record: portfolio:http_request_duration_avg_ms
+        expr: rate(http_request_duration_seconds_sum{job="portfolio-backend"}[5m]) / rate(http_request_duration_seconds_count{job="portfolio-backend"}[5m]) * 1000
+      
+      - record: portfolio:http_request_duration_p95_ms
+        expr: histogram_quantile(0.95, rate(http_request_duration_seconds_bucket{job="portfolio-backend"}[5m])) * 1000
+      
+      - record: portfolio:http_request_duration_p99_ms
+        expr: histogram_quantile(0.99, rate(http_request_duration_seconds_bucket{job="portfolio-backend"}[5m])) * 1000
+
+      # Error Rate Rules
+      - record: portfolio:http_errors_5xx_percent
+        expr: sum(rate(http_requests_total{job="portfolio-backend",status_code=~"5.."}[5m])) / sum(rate(http_requests_total{job="portfolio-backend"}[5m])) * 100
+      
+      - record: portfolio:http_errors_4xx_percent
+        expr: sum(rate(http_requests_total{job="portfolio-backend",status_code=~"4.."}[5m])) / sum(rate(http_requests_total{job="portfolio-backend"}[5m])) * 100
+      
+      - record: portfolio:http_success_rate_percent
+        expr: sum(rate(http_requests_total{job="portfolio-backend",status_code=~"2.."}[5m])) / sum(rate(http_requests_total{job="portfolio-backend"}[5m])) * 100
+
+      # System Resource Rules
+      - record: portfolio:memory_usage_mb
+        expr: process_resident_memory_bytes{job="portfolio-backend"} / 1024 / 1024
+      
+      - record: portfolio:cpu_usage_rate
+        expr: rate(process_cpu_seconds_total{job="portfolio-backend"}[5m])
+      
+      - record: portfolio:eventloop_lag_ms
+        expr: nodejs_eventloop_lag_seconds{job="portfolio-backend"} * 1000
+      
+      - record: portfolio:process_uptime_seconds
+        expr: time() - process_start_time_seconds{job="portfolio-backend"}
+
+      # Node.js Specific Rules
+      - record: portfolio:nodejs_active_handles
+        expr: nodejs_active_handles{job="portfolio-backend"}
+      
+      - record: portfolio:nodejs_active_requests
+        expr: nodejs_active_requests_total{job="portfolio-backend"}
+      
+      - record: portfolio:nodejs_heap_used_mb
+        expr: nodejs_heap_size_used_bytes{job="portfolio-backend"} / 1024 / 1024 

@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prometheus Panels Dashboard</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 10px;
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+        .header {
+            background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .header p {
+            margin: 5px 0 0 0;
+            opacity: 0.9;
+        }
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .panel {
+            background: #2a2a2a;
+            border-radius: 8px;
+            border: 1px solid #333;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        .panel-header {
+            background: #333;
+            padding: 10px 15px;
+            border-bottom: 1px solid #444;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .panel-title {
+            font-weight: 600;
+            color: #e53e3e;
+            font-size: 14px;
+        }
+        .panel-query {
+            font-family: monospace;
+            font-size: 11px;
+            color: #aaa;
+            background: #1a1a1a;
+            padding: 4px 8px;
+            border-radius: 4px;
+            max-width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .panel-content {
+            height: 250px;
+            position: relative;
+        }
+        .panel-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: #1a1a1a;
+        }
+        .panel-actions {
+            background: #333;
+            padding: 8px 15px;
+            border-top: 1px solid #444;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .panel-link {
+            background: #e53e3e;
+            color: white;
+            padding: 6px 12px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 12px;
+            transition: background 0.3s;
+        }
+        .panel-link:hover {
+            background: #c53030;
+        }
+        .panel-status {
+            font-size: 12px;
+            color: #4caf50;
+        }
+        .controls {
+            background: #2a2a2a;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #333;
+        }
+        .control-group {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .control-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .control-item label {
+            font-size: 14px;
+            color: #aaa;
+        }
+        .control-item select, .control-item input {
+            background: #333;
+            border: 1px solid #444;
+            color: #fff;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        .refresh-btn {
+            background: #e53e3e;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background 0.3s;
+        }
+        .refresh-btn:hover {
+            background: #c53030;
+        }
+        .status-bar {
+            background: #2a2a2a;
+            border-radius: 8px;
+            padding: 10px 15px;
+            margin-bottom: 15px;
+            border: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+        }
+        .status-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #4caf50;
+            margin-right: 8px;
+        }
+        .fullscreen-btn {
+            background: #333;
+            color: #aaa;
+            border: 1px solid #444;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s;
+        }
+        .fullscreen-btn:hover {
+            background: #444;
+            color: #fff;
+        }
+        .section-title {
+            background: #333;
+            padding: 10px 15px;
+            margin: 20px 0 10px 0;
+            border-radius: 8px;
+            font-weight: 600;
+            color: #e53e3e;
+            border-left: 4px solid #e53e3e;
+        }
+        @media (max-width: 768px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            .panel-query {
+                max-width: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📊 Prometheus Panels Dashboard</h1>
+        <p>Live panels with real-time graphs from Prometheus</p>
+    </div>
+
+    <div class="controls">
+        <div class="control-group">
+            <div class="control-item">
+                <label>Time Range:</label>
+                <select id="timeRange" onchange="updateAllPanels()">
+                    <option value="15m">Last 15 minutes</option>
+                    <option value="1h">Last 1 hour</option>
+                    <option value="6h">Last 6 hours</option>
+                    <option value="1d">Last 1 day</option>
+                    <option value="7d">Last 7 days</option>
+                </select>
+            </div>
+            <div class="control-item">
+                <label>Refresh:</label>
+                <select id="refreshInterval" onchange="setRefreshInterval()">
+                    <option value="0">Manual</option>
+                    <option value="30">30 seconds</option>
+                    <option value="60">1 minute</option>
+                    <option value="300">5 minutes</option>
+                </select>
+            </div>
+            <button class="refresh-btn" onclick="refreshAllPanels()">🔄 Refresh All</button>
+            <button class="fullscreen-btn" onclick="toggleFullscreen()">⛶ Fullscreen</button>
+        </div>
+    </div>
+
+    <div class="status-bar">
+        <div>
+            <span class="status-indicator"></span>
+            <span id="statusText">All panels connected</span>
+        </div>
+        <div>
+            Last updated: <span id="lastUpdate">Loading...</span>
+        </div>
+    </div>
+
+    <div class="section-title">📊 Request Metrics</div>
+    <div class="dashboard-grid">
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">🚀 Total Request Rate</div>
+                <div class="panel-query">portfolio:http_requests_total:rate5m</div>
+            </div>
+            <div class="panel-content">
+                <iframe class="panel-iframe" id="panel-1" src=""></iframe>
+            </div>
+            <div class="panel-actions">
+                <a href="#" class="panel-link" target="_blank">Open in Prometheus</a>
+                <span class="panel-status">Live</span>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">🛣️ Request Rate by Route</div>
+                <div class="panel-query">portfolio:http_requests_by_route:rate5m</div>
+            </div>
+            <div class="panel-content">
+                <iframe class="panel-iframe" id="panel-2" src=""></iframe>
+            </div>
+            <div class="panel-actions">
+                <a href="#" class="panel-link" target="_blank">Open in Prometheus</a>
+                <span class="panel-status">Live</span>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">📡 Request Rate by Method</div>
+                <div class="panel-query">portfolio:http_requests_by_method:rate5m</div>
+            </div>
+            <div class="panel-content">
+                <iframe class="panel-iframe" id="panel-3" src=""></iframe>
+            </div>
+            <div class="panel-actions">
+                <a href="#" class="panel-link" target="_blank">Open in Prometheus</a>
+                <span class="panel-status">Live</span>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">📊 Request Rate by Status</div>
+                <div class="panel-query">portfolio:http_requests_by_status:rate5m</div>
+            </div>
+            <div class="panel-content">
+                <iframe class="panel-iframe" id="panel-4" src=""></iframe>
+            </div>
+            <div class="panel-actions">
+                <a href="#" class="panel-link" target="_blank">Open in Prometheus</a>
+                <span class="panel-status">Live</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">⚡ Response Time Metrics</div>
+    <div class="dashboard-grid">
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">⚡ Average Response Time</div>
+                <div class="panel-query">portfolio:http_request_duration_avg_ms</div>
+            </div>
+            <div class="panel-content">
+                <iframe class="panel-iframe" id="panel-5" src=""></iframe>
+            </div>
+            <div class="panel-actions">
+                <a href="#" class="panel-link" target="_blank">Open in Prometheus</a>
+                <span class="panel-status">Live</span>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">📈 95th Percentile Response Time</div>
+                <div class="panel-query">portfolio:http_request_duration_p95_ms</div>
+            </div>
+            <div class="panel-content">
+                <iframe class="panel-iframe" id="panel-6" src=""></iframe>
+            </div>
+            <div class="panel-actions">
+                <a href="#" class="panel-link" target="_blank">Open in Prometheus</a>
+                <span class="panel-status">Live</span>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">📊 99th Percentile Response Time</div>
+                <div class="panel-query">portfolio:http_request_duration_p99_ms</div>
+            </div>
+            <div class="panel-content">
+                <iframe class="panel-iframe" id="panel-7" src=""></iframe>
+            </div>
+            <div class="panel-actions">
+                <a href="#" class="panel-link" target="_blank">Open in Prometheus</a>
+                <span class="panel-status">Live</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">❌ Error Rate Metrics</div>
+    <div class="dashboard-grid">
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">✅ Success Rate</div>
+                <div class="panel-query">portfolio:http_success_rate_percent</div>
+            </div>
+            <div class="panel-content">
+                <iframe class="panel-iframe" id="panel-8" src=""></iframe>
+            </div>
+            <div class="panel-actions">
+                <a href="#" class="panel-link" target="_blank">Open in Prometheus</a>
+                <span class="panel-status">Live</span>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">❌ 5xx Error Rate</div>
+                <div class="panel-query">portfolio:http_errors_5xx_percent</div>
+            </div>
+            <div class="panel-content">
+                <iframe class="panel-iframe" id="panel-9" src=""></iframe>
+            </div>
+            <div class="panel-actions">
+                <a href="#" class="panel-link" target="_blank">Open in Prometheus</a>
+                <span class="panel-status">Live</span>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">⚠️ 4xx Error Rate</div>
+                <div class="panel-query">portfolio:http_errors_4xx_percent</div>
+            </div>
+            <div class="panel-content">
+                <iframe class="panel-iframe" id="panel-10" src=""></iframe>
+            </div>
+            <div class="panel-actions">
+                <a href="#" class="panel-link" target="_blank">Open in Prometheus</a>
+                <span class="panel-status">Live</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">💾 System Resource Metrics</div>
+    <div class="dashboard-grid">
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">💾 Memory Usage</div>
+                <div class="panel-query">portfolio:memory_usage_mb</div>
+            </div>
+            <div class="panel-content">
+                <iframe class="panel-iframe" id="panel-11" src=""></iframe>
+            </div>
+            <div class="panel-actions">
+                <a href="#" class="panel-link" target="_blank">Open in Prometheus</a>
+                <span class="panel-status">Live</span>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">📈 CPU Usage Rate</div>
+                <div class="panel-query">portfolio:cpu_usage_rate</div>
+            </div>
+            <div class="panel-content">
+                <iframe class="panel-iframe" id="panel-12" src=""></iframe>
+            </div>
+            <div class="panel-actions">
+                <a href="#" class="panel-link" target="_blank">Open in Prometheus</a>
+                <span class="panel-status">Live</span>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">🔄 Event Loop Lag</div>
+                <div class="panel-query">portfolio:eventloop_lag_ms</div>
+            </div>
+            <div class="panel-content">
+                <iframe class="panel-iframe" id="panel-13" src=""></iframe>
+            </div>
+            <div class="panel-actions">
+                <a href="#" class="panel-link" target="_blank">Open in Prometheus</a>
+                <span class="panel-status">Live</span>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">⏱️ Process Uptime</div>
+                <div class="panel-query">portfolio:process_uptime_seconds</div>
+            </div>
+            <div class="panel-content">
+                <iframe class="panel-iframe" id="panel-14" src=""></iframe>
+            </div>
+            <div class="panel-actions">
+                <a href="#" class="panel-link" target="_blank">Open in Prometheus</a>
+                <span class="panel-status">Live</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">🟢 Node.js Specific Metrics</div>
+    <div class="dashboard-grid">
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">🔗 Active Handles</div>
+                <div class="panel-query">portfolio:nodejs_active_handles</div>
+            </div>
+            <div class="panel-content">
+                <iframe class="panel-iframe" id="panel-15" src=""></iframe>
+            </div>
+            <div class="panel-actions">
+                <a href="#" class="panel-link" target="_blank">Open in Prometheus</a>
+                <span class="panel-status">Live</span>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">📨 Active Requests</div>
+                <div class="panel-query">portfolio:nodejs_active_requests</div>
+            </div>
+            <div class="panel-content">
+                <iframe class="panel-iframe" id="panel-16" src=""></iframe>
+            </div>
+            <div class="panel-actions">
+                <a href="#" class="panel-link" target="_blank">Open in Prometheus</a>
+                <span class="panel-status">Live</span>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">🗑️ Heap Memory Used</div>
+                <div class="panel-query">portfolio:nodejs_heap_used_mb</div>
+            </div>
+            <div class="panel-content">
+                <iframe class="panel-iframe" id="panel-17" src=""></iframe>
+            </div>
+            <div class="panel-actions">
+                <a href="#" class="panel-link" target="_blank">Open in Prometheus</a>
+                <span class="panel-status">Live</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Panel configurations
+        const panels = [
+            { id: 1, query: 'portfolio:http_requests_total:rate5m', title: 'Total Request Rate' },
+            { id: 2, query: 'portfolio:http_requests_by_route:rate5m', title: 'Request Rate by Route' },
+            { id: 3, query: 'portfolio:http_requests_by_method:rate5m', title: 'Request Rate by Method' },
+            { id: 4, query: 'portfolio:http_requests_by_status:rate5m', title: 'Request Rate by Status' },
+            { id: 5, query: 'portfolio:http_request_duration_avg_ms', title: 'Average Response Time' },
+            { id: 6, query: 'portfolio:http_request_duration_p95_ms', title: '95th Percentile Response Time' },
+            { id: 7, query: 'portfolio:http_request_duration_p99_ms', title: '99th Percentile Response Time' },
+            { id: 8, query: 'portfolio:http_success_rate_percent', title: 'Success Rate' },
+            { id: 9, query: 'portfolio:http_errors_5xx_percent', title: '5xx Error Rate' },
+            { id: 10, query: 'portfolio:http_errors_4xx_percent', title: '4xx Error Rate' },
+            { id: 11, query: 'portfolio:memory_usage_mb', title: 'Memory Usage' },
+            { id: 12, query: 'portfolio:cpu_usage_rate', title: 'CPU Usage Rate' },
+            { id: 13, query: 'portfolio:eventloop_lag_ms', title: 'Event Loop Lag' },
+            { id: 14, query: 'portfolio:process_uptime_seconds', title: 'Process Uptime' },
+            { id: 15, query: 'portfolio:nodejs_active_handles', title: 'Active Handles' },
+            { id: 16, query: 'portfolio:nodejs_active_requests', title: 'Active Requests' },
+            { id: 17, query: 'portfolio:nodejs_heap_used_mb', title: 'Heap Memory Used' }
+        ];
+
+        let refreshInterval = null;
+
+        // Update panel URL
+        function updatePanel(panelId, query) {
+            const timeRange = document.getElementById('timeRange').value;
+            const encodedQuery = encodeURIComponent(query);
+            const url = `http://localhost:9090/graph?g0.expr=${encodedQuery}&g0.tab=1&g0.stacked=0&g0.show_exemplars=0&g0.range_input=${timeRange}`;
+            
+            const iframe = document.getElementById(`panel-${panelId}`);
+            const link = iframe.parentElement.nextElementSibling.querySelector('.panel-link');
+            
+            iframe.src = url;
+            link.href = url;
+        }
+
+        // Update all panels
+        function updateAllPanels() {
+            panels.forEach(panel => {
+                updatePanel(panel.id, panel.query);
+            });
+            updateLastUpdate();
+        }
+
+        // Refresh all panels
+        function refreshAllPanels() {
+            updateAllPanels();
+        }
+
+        // Set refresh interval
+        function setRefreshInterval() {
+            const interval = parseInt(document.getElementById('refreshInterval').value);
+            
+            if (refreshInterval) {
+                clearInterval(refreshInterval);
+                refreshInterval = null;
+            }
+            
+            if (interval > 0) {
+                refreshInterval = setInterval(updateAllPanels, interval * 1000);
+            }
+        }
+
+        // Update last update time
+        function updateLastUpdate() {
+            document.getElementById('lastUpdate').textContent = new Date().toLocaleTimeString();
+        }
+
+        // Toggle fullscreen
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        // Initialize dashboard
+        window.addEventListener('load', function() {
+            updateAllPanels();
+            
+            // Set default refresh interval to 30 seconds
+            document.getElementById('refreshInterval').value = '30';
+            setRefreshInterval();
+        });
+
+        // Handle iframe load events
+        panels.forEach(panel => {
+            const iframe = document.getElementById(`panel-${panel.id}`);
+            iframe.addEventListener('load', function() {
+                const status = this.parentElement.nextElementSibling.querySelector('.panel-status');
+                status.textContent = 'Live';
+                status.style.color = '#4caf50';
+            });
+            
+            iframe.addEventListener('error', function() {
+                const status = this.parentElement.nextElementSibling.querySelector('.panel-status');
+                status.textContent = 'Error';
+                status.style.color = '#f44336';
+            });
+        });
+    </script>
+</body>
+</html> 

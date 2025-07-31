@@ -1,0 +1,17 @@
+{
+	"ulid": "01K172FJZ4QESF07K5D5JCYS0M",
+	"minTime": 1753647038766,
+	"maxTime": 1753653600000,
+	"stats": {
+		"numSamples": 142103,
+		"numSeries": 1161,
+		"numChunks": 1967
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01K172FJZ4QESF07K5D5JCYS0M"
+		]
+	},
+	"version": 1
+}

@@ -1,0 +1,17 @@
+{
+	"ulid": "01K1795Q6763GK00MY281FF90B",
+	"minTime": 1753654104006,
+	"maxTime": 1753660800000,
+	"stats": {
+		"numSamples": 163305,
+		"numSeries": 1162,
+		"numChunks": 1199
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01K1795Q6763GK00MY281FF90B"
+		]
+	},
+	"version": 1
+}

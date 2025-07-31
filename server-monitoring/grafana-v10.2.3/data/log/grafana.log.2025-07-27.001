@@ -1,0 +1,218 @@
+logger=cleanup t=2025-07-26T00:19:37.858467-07:00 level=info msg="Completed cleanup jobs" duration=20.575791ms
+logger=grafana.update.checker t=2025-07-26T00:19:38.050666-07:00 level=info msg="Update check succeeded" duration=104.734359ms
+logger=plugins.update.checker t=2025-07-26T00:19:38.142031-07:00 level=info msg="Update check succeeded" duration=170.543209ms
+logger=infra.usagestats t=2025-07-26T00:21:23.848672-07:00 level=info msg="Usage stats are ready to report"
+logger=cleanup t=2025-07-26T01:10:16.010851-07:00 level=info msg="Completed cleanup jobs" duration=17.848619ms
+logger=grafana.update.checker t=2025-07-26T01:10:16.205359-07:00 level=info msg="Update check succeeded" duration=105.870186ms
+logger=plugins.update.checker t=2025-07-26T01:10:16.288907-07:00 level=info msg="Update check succeeded" duration=162.565825ms
+logger=cleanup t=2025-07-26T01:56:30.659834-07:00 level=info msg="Completed cleanup jobs" duration=6.909379ms
+logger=grafana.update.checker t=2025-07-26T01:56:30.868779-07:00 level=info msg="Update check succeeded" duration=105.75209ms
+logger=plugins.update.checker t=2025-07-26T01:56:30.942444-07:00 level=info msg="Update check succeeded" duration=154.362257ms
+logger=cleanup t=2025-07-26T02:56:37.261018-07:00 level=info msg="Completed cleanup jobs" duration=29.490066ms
+logger=grafana.update.checker t=2025-07-26T02:56:37.457881-07:00 level=info msg="Update check succeeded" duration=118.063235ms
+logger=plugins.update.checker t=2025-07-26T02:56:37.512385-07:00 level=info msg="Update check succeeded" duration=147.567235ms
+logger=infra.usagestats t=2025-07-26T03:14:36.252529-07:00 level=info msg="Usage stats are ready to report"
+logger=cleanup t=2025-07-26T03:57:08.811334-07:00 level=info msg="Completed cleanup jobs" duration=8.056954ms
+logger=grafana.update.checker t=2025-07-26T03:57:09.026524-07:00 level=info msg="Update check succeeded" duration=115.057787ms
+logger=plugins.update.checker t=2025-07-26T03:57:09.093574-07:00 level=info msg="Update check succeeded" duration=157.003484ms
+logger=cleanup t=2025-07-26T04:56:51.913483-07:00 level=info msg="Completed cleanup jobs" duration=18.269061ms
+logger=grafana.update.checker t=2025-07-26T04:56:52.106543-07:00 level=info msg="Update check succeeded" duration=103.339275ms
+logger=plugins.update.checker t=2025-07-26T04:56:52.178634-07:00 level=info msg="Update check succeeded" duration=152.366429ms
+logger=cleanup t=2025-07-26T05:57:04.749056-07:00 level=info msg="Completed cleanup jobs" duration=4.872684ms
+logger=grafana.update.checker t=2025-07-26T05:57:04.975547-07:00 level=info msg="Update check succeeded" duration=123.535697ms
+logger=plugins.update.checker t=2025-07-26T05:57:05.03919-07:00 level=info msg="Update check succeeded" duration=161.682721ms
+logger=infra.usagestats t=2025-07-26T05:58:50.755148-07:00 level=info msg="Usage stats are ready to report"
+logger=cleanup t=2025-07-26T06:57:50.327925-07:00 level=info msg="Completed cleanup jobs" duration=29.366973ms
+logger=grafana.update.checker t=2025-07-26T06:57:50.533506-07:00 level=info msg="Update check succeeded" duration=129.17465ms
+logger=plugins.update.checker t=2025-07-26T06:57:50.612384-07:00 level=info msg="Update check succeeded" duration=181.735132ms
+logger=cleanup t=2025-07-26T07:56:49.354768-07:00 level=info msg="Completed cleanup jobs" duration=9.326337ms
+logger=grafana.update.checker t=2025-07-26T07:56:49.452709-07:00 level=error msg="Update check failed" error="failed to get latest.json repo from github.com: Get \"https://raw.githubusercontent.com/grafana/grafana/main/latest.json\": dial tcp: lookup raw.githubusercontent.com: no such host" duration=1.033854ms
+logger=cleanup t=2025-07-26T08:53:15.485143-07:00 level=info msg="Completed cleanup jobs" duration=54.316437ms
+logger=grafana.update.checker t=2025-07-26T08:53:15.979386-07:00 level=info msg="Update check succeeded" duration=441.421501ms
+logger=plugins.update.checker t=2025-07-26T08:53:16.122669-07:00 level=info msg="Update check succeeded" duration=558.41382ms
+logger=infra.usagestats t=2025-07-26T08:55:01.44411-07:00 level=info msg="Usage stats are ready to report"
+logger=cleanup t=2025-07-26T09:22:18.341775-07:00 level=info msg="Completed cleanup jobs" duration=10.194244ms
+logger=grafana.update.checker t=2025-07-26T09:22:18.565545-07:00 level=info msg="Update check succeeded" duration=126.140507ms
+logger=plugins.update.checker t=2025-07-26T09:22:18.63481-07:00 level=info msg="Update check succeeded" duration=171.938738ms
+logger=cleanup t=2025-07-26T09:32:18.327215-07:00 level=info msg="Completed cleanup jobs" duration=19.130626ms
+logger=grafana.update.checker t=2025-07-26T09:32:18.537797-07:00 level=info msg="Update check succeeded" duration=121.929272ms
+logger=plugins.update.checker t=2025-07-26T09:32:18.603613-07:00 level=info msg="Update check succeeded" duration=160.689001ms
+logger=cleanup t=2025-07-26T09:43:29.439719-07:00 level=info msg="Completed cleanup jobs" duration=12.30193ms
+logger=grafana.update.checker t=2025-07-26T09:43:29.644031-07:00 level=info msg="Update check succeeded" duration=108.463518ms
+logger=plugins.update.checker t=2025-07-26T09:43:29.699312-07:00 level=info msg="Update check succeeded" duration=140.405578ms
+logger=infra.usagestats t=2025-07-26T10:02:11.802472-07:00 level=info msg="Usage stats are ready to report"
+logger=cleanup t=2025-07-26T10:39:46.288905-07:00 level=info msg="Completed cleanup jobs" duration=8.550467ms
+logger=grafana.update.checker t=2025-07-26T10:39:46.529642-07:00 level=info msg="Update check succeeded" duration=140.511512ms
+logger=plugins.update.checker t=2025-07-26T10:39:46.703459-07:00 level=info msg="Update check succeeded" duration=289.345349ms
+logger=cleanup t=2025-07-26T11:40:32.025996-07:00 level=info msg="Completed cleanup jobs" duration=7.229284ms
+logger=grafana.update.checker t=2025-07-26T11:40:32.230052-07:00 level=info msg="Update check succeeded" duration=105.375466ms
+logger=plugins.update.checker t=2025-07-26T11:40:32.298831-07:00 level=info msg="Update check succeeded" duration=147.743052ms
+logger=cleanup t=2025-07-26T12:39:17.735326-07:00 level=info msg="Completed cleanup jobs" duration=27.50406ms
+logger=grafana.update.checker t=2025-07-26T12:39:17.95157-07:00 level=info msg="Update check succeeded" duration=136.131075ms
+logger=plugins.update.checker t=2025-07-26T12:39:18.013304-07:00 level=info msg="Update check succeeded" duration=172.871536ms
+logger=infra.usagestats t=2025-07-26T12:41:03.721827-07:00 level=info msg="Usage stats are ready to report"
+logger=cleanup t=2025-07-26T13:20:44.884826-07:00 level=info msg="Completed cleanup jobs" duration=11.963558ms
+logger=grafana.update.checker t=2025-07-26T13:20:45.155606-07:00 level=info msg="Update check succeeded" duration=175.218266ms
+logger=plugins.update.checker t=2025-07-26T13:20:45.239686-07:00 level=info msg="Update check succeeded" duration=233.820391ms
+logger=cleanup t=2025-07-26T13:41:44.611978-07:00 level=info msg="Completed cleanup jobs" duration=7.242262ms
+logger=grafana.update.checker t=2025-07-26T13:41:44.90905-07:00 level=info msg="Update check succeeded" duration=196.626976ms
+logger=plugins.update.checker t=2025-07-26T13:41:44.968636-07:00 level=info msg="Update check succeeded" duration=230.56617ms
+logger=cleanup t=2025-07-26T14:41:40.50446-07:00 level=info msg="Completed cleanup jobs" duration=7.605351ms
+logger=grafana.update.checker t=2025-07-26T14:41:40.711326-07:00 level=info msg="Update check succeeded" duration=108.008832ms
+logger=plugins.update.checker t=2025-07-26T14:41:40.792066-07:00 level=info msg="Update check succeeded" duration=162.063768ms
+logger=infra.usagestats t=2025-07-26T15:01:00.633095-07:00 level=info msg="Usage stats are ready to report"
+logger=cleanup t=2025-07-26T15:42:12.469985-07:00 level=info msg="Completed cleanup jobs" duration=8.903525ms
+logger=grafana.update.checker t=2025-07-26T15:42:12.808942-07:00 level=info msg="Update check succeeded" duration=239.913227ms
+logger=plugins.update.checker t=2025-07-26T15:42:12.90725-07:00 level=info msg="Update check succeeded" duration=314.64555ms
+logger=cleanup t=2025-07-26T16:02:33.111669-07:00 level=info msg="Completed cleanup jobs" duration=8.572451ms
+logger=grafana.update.checker t=2025-07-26T16:02:33.509784-07:00 level=info msg="Update check succeeded" duration=298.767703ms
+logger=plugins.update.checker t=2025-07-26T16:02:33.616277-07:00 level=info msg="Update check succeeded" duration=379.37113ms
+logger=cleanup t=2025-07-26T16:12:33.087368-07:00 level=info msg="Completed cleanup jobs" duration=2.273453ms
+logger=grafana.update.checker t=2025-07-26T16:12:33.264015-07:00 level=info msg="Update check succeeded" duration=74.237404ms
+logger=plugins.update.checker t=2025-07-26T16:12:33.368721-07:00 level=info msg="Update check succeeded" duration=154.591549ms
+logger=infra.usagestats t=2025-07-26T16:14:19.091814-07:00 level=info msg="Usage stats are ready to report"
+logger=cleanup t=2025-07-26T16:22:33.068715-07:00 level=info msg="Completed cleanup jobs" duration=9.30119ms
+logger=grafana.update.checker t=2025-07-26T16:22:33.25018-07:00 level=info msg="Update check succeeded" duration=82.347301ms
+logger=plugins.update.checker t=2025-07-26T16:22:33.354829-07:00 level=info msg="Update check succeeded" duration=162.552179ms
+logger=cleanup t=2025-07-26T16:32:33.040741-07:00 level=info msg="Completed cleanup jobs" duration=2.819851ms
+logger=grafana.update.checker t=2025-07-26T16:32:33.226197-07:00 level=info msg="Update check succeeded" duration=79.61842ms
+logger=plugins.update.checker t=2025-07-26T16:32:33.311227-07:00 level=info msg="Update check succeeded" duration=140.193343ms
+logger=cleanup t=2025-07-26T16:42:33.019171-07:00 level=info msg="Completed cleanup jobs" duration=2.444334ms
+logger=grafana.update.checker t=2025-07-26T16:42:33.206004-07:00 level=info msg="Update check succeeded" duration=82.040446ms
+logger=plugins.update.checker t=2025-07-26T16:42:33.313173-07:00 level=info msg="Update check succeeded" duration=163.607622ms
+logger=infra.usagestats t=2025-07-26T16:44:19.028392-07:00 level=info msg="Usage stats are ready to report"
+logger=cleanup t=2025-07-26T16:52:32.998383-07:00 level=info msg="Completed cleanup jobs" duration=4.110619ms
+logger=grafana.update.checker t=2025-07-26T16:52:33.206212-07:00 level=info msg="Update check succeeded" duration=104.181035ms
+logger=plugins.update.checker t=2025-07-26T16:52:33.28827-07:00 level=info msg="Update check succeeded" duration=161.271896ms
+logger=cleanup t=2025-07-26T17:02:32.982091-07:00 level=info msg="Completed cleanup jobs" duration=9.87573ms
+logger=grafana.update.checker t=2025-07-26T17:02:33.19933-07:00 level=info msg="Update check succeeded" duration=118.841853ms
+logger=plugins.update.checker t=2025-07-26T17:02:33.34852-07:00 level=info msg="Update check succeeded" duration=243.234512ms
+logger=cleanup t=2025-07-26T17:12:32.958336-07:00 level=info msg="Completed cleanup jobs" duration=7.481638ms
+logger=grafana.update.checker t=2025-07-26T17:12:33.681301-07:00 level=info msg="Update check succeeded" duration=622.915244ms
+logger=plugins.update.checker t=2025-07-26T17:12:33.79399-07:00 level=info msg="Update check succeeded" duration=709.855238ms
+logger=infra.usagestats t=2025-07-26T17:14:18.960914-07:00 level=info msg="Usage stats are ready to report"
+logger=cleanup t=2025-07-26T17:22:32.938365-07:00 level=info msg="Completed cleanup jobs" duration=9.236906ms
+logger=grafana.update.checker t=2025-07-26T17:22:33.276891-07:00 level=info msg="Update check succeeded" duration=239.281877ms
+logger=plugins.update.checker t=2025-07-26T17:22:33.377544-07:00 level=info msg="Update check succeeded" duration=314.881417ms
+logger=cleanup t=2025-07-26T17:32:32.915504-07:00 level=info msg="Completed cleanup jobs" duration=7.831148ms
+logger=grafana.update.checker t=2025-07-26T17:32:33.140335-07:00 level=info msg="Update check succeeded" duration=125.095656ms
+logger=plugins.update.checker t=2025-07-26T17:32:33.195138-07:00 level=info msg="Update check succeeded" duration=154.412735ms
+logger=cleanup t=2025-07-26T17:42:32.887377-07:00 level=info msg="Completed cleanup jobs" duration=1.442543ms
+logger=grafana.update.checker t=2025-07-26T17:42:33.061163-07:00 level=info msg="Update check succeeded" duration=68.020585ms
+logger=plugins.update.checker t=2025-07-26T17:42:33.158702-07:00 level=info msg="Update check succeeded" duration=140.272237ms
+logger=infra.usagestats t=2025-07-26T17:44:18.898462-07:00 level=info msg="Usage stats are ready to report"
+logger=cleanup t=2025-07-26T17:52:32.867977-07:00 level=info msg="Completed cleanup jobs" duration=3.935102ms
+logger=grafana.update.checker t=2025-07-26T17:52:33.050452-07:00 level=info msg="Update check succeeded" duration=78.244863ms
+logger=plugins.update.checker t=2025-07-26T17:52:33.16428-07:00 level=info msg="Update check succeeded" duration=167.708961ms
+logger=cleanup t=2025-07-26T18:02:32.84371-07:00 level=info msg="Completed cleanup jobs" duration=2.130076ms
+logger=grafana.update.checker t=2025-07-26T18:02:33.023557-07:00 level=info msg="Update check succeeded" duration=73.95582ms
+logger=plugins.update.checker t=2025-07-26T18:02:33.122754-07:00 level=info msg="Update check succeeded" duration=147.936319ms
+logger=cleanup t=2025-07-26T18:12:32.881731-07:00 level=info msg="Completed cleanup jobs" duration=60.113587ms
+logger=grafana.update.checker t=2025-07-26T18:12:33.572349-07:00 level=info msg="Update check succeeded" duration=643.774162ms
+logger=plugins.update.checker t=2025-07-26T18:12:33.626391-07:00 level=info msg="Update check succeeded" duration=672.673825ms
+logger=infra.usagestats t=2025-07-26T18:14:18.829567-07:00 level=info msg="Usage stats are ready to report"
+logger=cleanup t=2025-07-26T19:22:25.77992-07:00 level=info msg="Completed cleanup jobs" duration=5.701393ms
+logger=grafana.update.checker t=2025-07-26T19:22:25.999549-07:00 level=info msg="Update check succeeded" duration=117.058116ms
+logger=plugins.update.checker t=2025-07-26T19:22:26.065424-07:00 level=info msg="Update check succeeded" duration=159.09601ms
+logger=cleanup t=2025-07-26T19:50:33.432415-07:00 level=info msg="Completed cleanup jobs" duration=1.596048ms
+logger=grafana.update.checker t=2025-07-26T19:50:33.644292-07:00 level=info msg="Update check succeeded" duration=105.761324ms
+logger=plugins.update.checker t=2025-07-26T19:50:33.730249-07:00 level=info msg="Update check succeeded" duration=164.65915ms
+logger=cleanup t=2025-07-26T20:14:41.462866-07:00 level=info msg="Completed cleanup jobs" duration=5.078555ms
+logger=grafana.update.checker t=2025-07-26T20:14:41.658972-07:00 level=info msg="Update check succeeded" duration=92.45934ms
+logger=plugins.update.checker t=2025-07-26T20:14:41.734242-07:00 level=info msg="Update check succeeded" duration=142.671578ms
+logger=infra.usagestats t=2025-07-26T20:16:27.470471-07:00 level=info msg="Usage stats are ready to report"
+logger=cleanup t=2025-07-26T20:24:41.439274-07:00 level=info msg="Completed cleanup jobs" duration=2.716485ms
+logger=grafana.update.checker t=2025-07-26T20:24:41.637721-07:00 level=info msg="Update check succeeded" duration=93.432492ms
+logger=plugins.update.checker t=2025-07-26T20:24:41.711018-07:00 level=info msg="Update check succeeded" duration=141.53413ms
+logger=cleanup t=2025-07-26T20:34:41.419512-07:00 level=info msg="Completed cleanup jobs" duration=5.049798ms
+logger=grafana.update.checker t=2025-07-26T20:34:41.59012-07:00 level=info msg="Update check succeeded" duration=67.164324ms
+logger=plugins.update.checker t=2025-07-26T20:34:41.70145-07:00 level=info msg="Update check succeeded" duration=153.609971ms
+logger=cleanup t=2025-07-26T20:44:41.40716-07:00 level=info msg="Completed cleanup jobs" duration=14.721495ms
+logger=grafana.update.checker t=2025-07-26T20:44:41.568836-07:00 level=info msg="Update check succeeded" duration=67.267573ms
+logger=plugins.update.checker t=2025-07-26T20:44:41.759091-07:00 level=info msg="Update check succeeded" duration=233.577021ms
+logger=infra.usagestats t=2025-07-26T20:46:27.405197-07:00 level=info msg="Usage stats are ready to report"
+logger=cleanup t=2025-07-26T20:54:41.37302-07:00 level=info msg="Completed cleanup jobs" duration=1.621668ms
+logger=grafana.update.checker t=2025-07-26T20:54:41.548933-07:00 level=info msg="Update check succeeded" duration=69.747481ms
+logger=plugins.update.checker t=2025-07-26T20:54:41.666506-07:00 level=info msg="Update check succeeded" duration=162.771883ms
+logger=cleanup t=2025-07-26T21:04:41.354073-07:00 level=info msg="Completed cleanup jobs" duration=5.284262ms
+logger=grafana.update.checker t=2025-07-26T21:04:41.539746-07:00 level=info msg="Update check succeeded" duration=82.899011ms
+logger=plugins.update.checker t=2025-07-26T21:04:41.637673-07:00 level=info msg="Update check succeeded" duration=154.964724ms
+logger=cleanup t=2025-07-26T21:14:41.330783-07:00 level=info msg="Completed cleanup jobs" duration=2.971414ms
+logger=grafana.update.checker t=2025-07-26T21:14:41.626496-07:00 level=info msg="Update check succeeded" duration=190.59202ms
+logger=plugins.update.checker t=2025-07-26T21:14:41.719094-07:00 level=info msg="Update check succeeded" duration=258.149515ms
+logger=infra.usagestats t=2025-07-26T21:16:27.338542-07:00 level=info msg="Usage stats are ready to report"
+logger=cleanup t=2025-07-26T21:24:41.310997-07:00 level=info msg="Completed cleanup jobs" duration=5.034059ms
+logger=grafana.update.checker t=2025-07-26T21:24:41.493852-07:00 level=info msg="Update check succeeded" duration=79.749848ms
+logger=plugins.update.checker t=2025-07-26T21:24:41.600071-07:00 level=info msg="Update check succeeded" duration=160.928978ms
+logger=cleanup t=2025-07-26T22:20:32.999745-07:00 level=info msg="Completed cleanup jobs" duration=9.445609ms
+logger=grafana.update.checker t=2025-07-26T22:20:33.207238-07:00 level=info msg="Update check succeeded" duration=108.133714ms
+logger=plugins.update.checker t=2025-07-26T22:20:33.264533-07:00 level=info msg="Update check succeeded" duration=140.526508ms
+logger=cleanup t=2025-07-26T22:30:32.991968-07:00 level=info msg="Completed cleanup jobs" duration=23.629303ms
+logger=grafana.update.checker t=2025-07-26T22:30:33.16491-07:00 level=info msg="Update check succeeded" duration=87.448214ms
+logger=plugins.update.checker t=2025-07-26T22:30:33.271199-07:00 level=info msg="Update check succeeded" duration=169.600179ms
+logger=infra.usagestats t=2025-07-26T22:32:18.982717-07:00 level=info msg="Usage stats are ready to report"
+logger=cleanup t=2025-07-26T22:40:32.949988-07:00 level=info msg="Completed cleanup jobs" duration=3.213982ms
+logger=grafana.update.checker t=2025-07-26T22:40:33.132083-07:00 level=info msg="Update check succeeded" duration=77.480901ms
+logger=plugins.update.checker t=2025-07-26T22:40:33.21751-07:00 level=info msg="Update check succeeded" duration=137.649496ms
+logger=cleanup t=2025-07-26T22:50:32.935322-07:00 level=info msg="Completed cleanup jobs" duration=9.881758ms
+logger=grafana.update.checker t=2025-07-26T22:50:33.102986-07:00 level=info msg="Update check succeeded" duration=69.288842ms
+logger=plugins.update.checker t=2025-07-26T22:50:33.196158-07:00 level=info msg="Update check succeeded" duration=137.792909ms
+logger=cleanup t=2025-07-26T23:00:32.921244-07:00 level=info msg="Completed cleanup jobs" duration=17.063511ms
+logger=grafana.update.checker t=2025-07-26T23:00:33.101771-07:00 level=info msg="Update check succeeded" duration=89.541717ms
+logger=plugins.update.checker t=2025-07-26T23:00:33.20765-07:00 level=info msg="Update check succeeded" duration=170.385368ms
+logger=infra.usagestats t=2025-07-26T23:02:18.915445-07:00 level=info msg="Usage stats are ready to report"
+logger=cleanup t=2025-07-26T23:10:32.885291-07:00 level=info msg="Completed cleanup jobs" duration=3.571776ms
+logger=grafana.update.checker t=2025-07-26T23:10:33.090071-07:00 level=info msg="Update check succeeded" duration=99.616523ms
+logger=plugins.update.checker t=2025-07-26T23:10:33.171801-07:00 level=info msg="Update check succeeded" duration=156.6381ms
+logger=cleanup t=2025-07-26T23:20:32.870363-07:00 level=info msg="Completed cleanup jobs" duration=9.830519ms
+logger=grafana.update.checker t=2025-07-26T23:20:33.079255-07:00 level=info msg="Update check succeeded" duration=110.546521ms
+logger=plugins.update.checker t=2025-07-26T23:20:33.153904-07:00 level=info msg="Update check succeeded" duration=160.160383ms
+logger=cleanup t=2025-07-26T23:30:32.844964-07:00 level=info msg="Completed cleanup jobs" duration=6.452632ms
+logger=grafana.update.checker t=2025-07-26T23:30:33.012972-07:00 level=info msg="Update check succeeded" duration=67.111777ms
+logger=plugins.update.checker t=2025-07-26T23:30:33.119962-07:00 level=info msg="Update check succeeded" duration=148.252957ms
+logger=infra.usagestats t=2025-07-26T23:32:18.850468-07:00 level=info msg="Usage stats are ready to report"
+logger=server t=2025-07-26T23:38:28.702088-07:00 level=info msg="Shutdown started" reason="System signal: terminated"
+logger=tracing t=2025-07-26T23:38:28.703817-07:00 level=info msg="Closing tracing"
+logger=ticker t=2025-07-26T23:38:28.70393-07:00 level=info msg=stopped last_tick=2025-07-26T23:38:20-07:00
+logger=settings t=2025-07-26T23:38:45.674692-07:00 level=info msg="Starting Grafana" version=10.2.3 commit=1e84fede543acc892d2a2515187e545eb047f237 branch=HEAD compiled=2023-12-18T07:46:08-08:00
+logger=settings t=2025-07-26T23:38:45.675045-07:00 level=info msg="Config loaded from" file="/Users/abhijitdesai/Coding Projects/Portfolio Management/server-monitoring/grafana-v10.2.3/conf/defaults.ini"
+logger=settings t=2025-07-26T23:38:45.675087-07:00 level=info msg="Config loaded from" file="/Users/abhijitdesai/Coding Projects/Portfolio Management/server-monitoring/grafana-custom.ini"
+logger=settings t=2025-07-26T23:38:45.675106-07:00 level=info msg=Target target=[all]
+logger=settings t=2025-07-26T23:38:45.675128-07:00 level=info msg="Path Home" path="/Users/abhijitdesai/Coding Projects/Portfolio Management/server-monitoring/grafana-v10.2.3"
+logger=settings t=2025-07-26T23:38:45.675144-07:00 level=info msg="Path Data" path="/Users/abhijitdesai/Coding Projects/Portfolio Management/server-monitoring/grafana-v10.2.3/data"
+logger=settings t=2025-07-26T23:38:45.675165-07:00 level=info msg="Path Logs" path="/Users/abhijitdesai/Coding Projects/Portfolio Management/server-monitoring/grafana-v10.2.3/data/log"
+logger=settings t=2025-07-26T23:38:45.675187-07:00 level=info msg="Path Plugins" path="/Users/abhijitdesai/Coding Projects/Portfolio Management/server-monitoring/grafana-v10.2.3/data/plugins"
+logger=settings t=2025-07-26T23:38:45.675202-07:00 level=info msg="Path Provisioning" path="/Users/abhijitdesai/Coding Projects/Portfolio Management/server-monitoring/grafana-v10.2.3/conf/provisioning"
+logger=settings t=2025-07-26T23:38:45.675217-07:00 level=info msg="App mode production"
+logger=sqlstore t=2025-07-26T23:38:45.675688-07:00 level=info msg="Connecting to DB" dbtype=sqlite3
+logger=migrator t=2025-07-26T23:38:45.676538-07:00 level=info msg="Starting DB migrations"
+logger=migrator t=2025-07-26T23:38:45.686123-07:00 level=info msg="migrations completed" performed=0 skipped=523 duration=716.52µs
+logger=secrets t=2025-07-26T23:38:45.686985-07:00 level=info msg="Envelope encryption state" enabled=true currentprovider=secretKey.v1
+logger=plugin.store t=2025-07-26T23:38:45.704925-07:00 level=info msg="Loading plugins..."
+logger=plugins.registration t=2025-07-26T23:38:45.782883-07:00 level=info msg="Plugin registered" pluginId=input
+logger=local.finder t=2025-07-26T23:38:45.78296-07:00 level=warn msg="Skipping finding plugins as directory does not exist" path="/Users/abhijitdesai/Coding Projects/Portfolio Management/server-monitoring/grafana-v10.2.3/data/plugins"
+logger=plugin.store t=2025-07-26T23:38:45.782989-07:00 level=info msg="Plugins loaded" count=56 duration=78.067489ms
+logger=query_data t=2025-07-26T23:38:45.790737-07:00 level=info msg="Query Service initialization"
+logger=live.push_http t=2025-07-26T23:38:45.793961-07:00 level=info msg="Live Push Gateway initialization"
+logger=ngalert.migration t=2025-07-26T23:38:45.795784-07:00 level=info msg=Starting
+logger=ngalert.migration CurrentType=UnifiedAlerting DesiredType=UnifiedAlerting CleanOnDowngrade=false CleanOnUpgrade=false t=2025-07-26T23:38:45.796082-07:00 level=info msg="Migration already complete"
+logger=infra.usagestats.collector t=2025-07-26T23:38:45.807465-07:00 level=info msg="registering usage stat providers" usageStatsProvidersLen=2
+logger=provisioning.alerting t=2025-07-26T23:38:45.809363-07:00 level=info msg="starting to provision alerting"
+logger=provisioning.alerting t=2025-07-26T23:38:45.809421-07:00 level=info msg="finished to provision alerting"
+logger=ngalert.state.manager t=2025-07-26T23:38:45.809598-07:00 level=info msg="Warming state cache for startup"
+logger=grafanaStorageLogger t=2025-07-26T23:38:45.810178-07:00 level=info msg="Storage starting"
+logger=ngalert.state.manager t=2025-07-26T23:38:45.810203-07:00 level=info msg="State cache has been initialized" states=0 duration=604.158µs
+logger=ngalert.multiorg.alertmanager t=2025-07-26T23:38:45.810231-07:00 level=info msg="Starting MultiOrg Alertmanager"
+logger=ngalert.scheduler t=2025-07-26T23:38:45.8103-07:00 level=info msg="Starting scheduler" tickInterval=10s
+logger=ticker t=2025-07-26T23:38:45.810454-07:00 level=info msg=starting first_tick=2025-07-26T23:38:50-07:00
+logger=http.server t=2025-07-26T23:38:45.813848-07:00 level=info msg="HTTP Server Listen" address=[::]:9091 protocol=http subUrl= socket=
+logger=grafana.update.checker t=2025-07-26T23:38:45.886698-07:00 level=info msg="Update check succeeded" duration=76.339719ms
+logger=plugins.update.checker t=2025-07-26T23:38:45.962453-07:00 level=info msg="Update check succeeded" duration=152.819049ms
+logger=infra.usagestats t=2025-07-26T23:40:44.810557-07:00 level=info msg="Usage stats are ready to report"
+logger=context userId=0 orgId=0 uname= t=2025-07-26T23:43:30.492706-07:00 level=info msg="Request Completed" method=GET path=/ status=302 remote_addr=[::1] time_ms=0 duration=106.616µs size=29 referer= handler=/
+logger=http.server t=2025-07-26T23:43:30.514887-07:00 level=error msg="Failed to parse user ID" error="identifier is not initialized"
+logger=context userId=1 orgId=1 uname=admin t=2025-07-26T23:43:39.879519-07:00 level=info msg="Request Completed" method=GET path=/api/live/ws status=-1 remote_addr=[::1] time_ms=1 duration=1.397679ms size=0 referer= handler=/api/live/ws
+logger=live t=2025-07-26T23:43:52.218722-07:00 level=info msg="Initialized channel handler" channel=grafana/dashboard/uid/auto-dashboard address=grafana/dashboard/uid/auto-dashboard
+logger=cleanup t=2025-07-26T23:48:45.804988-07:00 level=info msg="Completed cleanup jobs" duration=15.988961ms
+logger=grafana.update.checker t=2025-07-26T23:48:45.938468-07:00 level=info msg="Update check succeeded" duration=73.032386ms
+logger=plugins.update.checker t=2025-07-26T23:48:46.089506-07:00 level=info msg="Update check succeeded" duration=148.212214ms

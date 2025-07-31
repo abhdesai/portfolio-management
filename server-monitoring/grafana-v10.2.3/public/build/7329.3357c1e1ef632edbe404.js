@@ -1,0 +1,47 @@
+"use strict";(self.webpackChunkgrafana=self.webpackChunkgrafana||[]).push([[7329,7641],{77977:(R,h,a)=>{a.r(h),a.d(h,{ServerStats:()=>A});var r=a(66681),e=a(85960),b=a(90857),u=a(47257),g=a(29165),d=a(95162),p=a(41879),D=a(34785),C=a(3913),P=a(13086);const E=({content:n,footer:v,isLoading:c})=>{const f=(0,u.wW)(N);return e.createElement(C._,{className:f.container,disableHover:!0},n.map((o,m)=>e.createElement(P.K,{key:m,justifyContent:"space-between",alignItems:"center"},e.createElement("span",null,o.name),c?e.createElement(D.Z,{width:60}):e.createElement("span",null,o.value))),v&&e.createElement("div",null,v))},N=n=>({container:(0,r.css)({display:"flex",flexDirection:"column",gap:n.spacing(2),padding:n.spacing(2)})});var x=a(85445);const T=async()=>(0,x.i)().get("api/admin/stats").catch(n=>(console.error(n),null)),A=()=>{const[n,v]=(0,e.useState)(null),[c,f]=(0,e.useState)(!0),o=(0,u.wW)(U),m=p.contextSrv.hasPermission(d.AccessControlAction.DataSourcesRead),t=p.contextSrv.hasPermission(d.AccessControlAction.UsersRead);return(0,e.useEffect)(()=>{p.contextSrv.hasPermission(d.AccessControlAction.ActionServerStatsRead)&&T().then(G=>{v(G),f(!1)})},[]),p.contextSrv.hasPermission(d.AccessControlAction.ActionServerStatsRead)?e.createElement(e.Fragment,null,e.createElement("h2",{className:o.title},"Instance statistics"),!c&&!n?e.createElement("p",{className:o.notFound},"No stats found."):e.createElement("div",{className:o.row},e.createElement(E,{isLoading:c,content:[{name:"Dashboards (starred)",value:`${n?.dashboards} (${n?.stars})`},{name:"Tags",value:n?.tags},{name:"Playlists",value:n?.playlists},{name:"Snapshots",value:n?.snapshots}],footer:e.createElement(g.Qj,{href:"/dashboards",variant:"secondary"},"Manage dashboards")}),e.createElement("div",{className:o.doubleRow},e.createElement(E,{isLoading:c,content:[{name:"Data sources",value:n?.datasources}],footer:m&&e.createElement(g.Qj,{href:"/datasources",variant:"secondary"},"Manage data sources")}),e.createElement(E,{isLoading:c,content:[{name:"Alerts",value:n?.alerts}],footer:e.createElement(g.Qj,{href:"/alerting/list",variant:"secondary"},"Alerts")})),e.createElement(E,{isLoading:c,content:[{name:"Organisations",value:n?.orgs},{name:"Users total",value:n?.users},{name:"Active users in last 30 days",value:n?.activeUsers},...b.config.featureToggles.displayAnonymousStats&&n?.activeDevices?[{name:"Active anonymous devices in last 30 days",value:n?.activeDevices},{name:"Active anonymous users in last 30 days",value:Math.floor(n?.activeDevices/3)}]:[],{name:"Active sessions",value:n?.activeSessions}],footer:t&&e.createElement(g.Qj,{href:"/admin/users",variant:"secondary"},"Manage users")}))):null},U=n=>({title:(0,r.css)({marginBottom:n.spacing(4)}),row:(0,r.css)({display:"flex",justifyContent:"space-between",width:"100%","& > div:not(:last-of-type)":{marginRight:n.spacing(2)},"& > div":{width:"33.3%"}}),doubleRow:(0,r.css)({display:"flex",flexDirection:"column","& > div:first-of-type":{marginBottom:n.spacing(2)}}),notFound:(0,r.css)({fontSize:n.typography.h6.fontSize,textAlign:"center",height:"290px"})})},77329:(R,h,a)=>{a.r(h),a.d(h,{UpgradeInfo:()=>A,UpgradePage:()=>x,default:()=>I});var r=a(66681),e=a(85960),b=a(36752),u=a(47257),g=a(29165),d=a(20989),p=a(87947);const D={fontWeight:500,fontSize:"26px",lineHeight:"123%"},C=s=>{const l=s.isDark?"public/img/licensing/header_dark.svg":"public/img/licensing/header_light.svg",i=s.isDark?s.v1.palette.dark9:s.v1.palette.gray6;return{container:(0,r.css)`
+      padding: 36px 79px;
+      background: ${s.components.panel.background};
+    `,footer:(0,r.css)`
+      text-align: center;
+      padding: 16px;
+      background: ${i};
+    `,header:(0,r.css)`
+      height: 137px;
+      padding: 40px 0 0 79px;
+      position: relative;
+      background: url('${l}') right;
+    `}};function P({header:s,editionNotice:l,subheader:i,children:y}){const S=(0,u.wW)(C);return e.createElement(e.Fragment,null,e.createElement("div",{className:S.header},e.createElement("h2",{style:D},s),i&&e.createElement("h3",null,i),e.createElement(E,{size:"128px",style:{boxShadow:"0px 0px 24px rgba(24, 58, 110, 0.45)",background:"#0A1C36",position:"absolute",top:"19px",left:"71%"}},e.createElement("img",{src:"public/img/grafana_icon.svg",alt:"Grafana",width:"80px",style:{position:"absolute",left:"23px",top:"20px"}}))),e.createElement("div",{className:S.container},y),l&&e.createElement("div",{className:S.footer},l))}const E=({size:s,style:l,children:i})=>{const y=(0,u.l4)();return e.createElement("div",{style:{width:s,height:s,position:"absolute",bottom:0,right:0,borderRadius:y.shape.radius.circle,...l}},i)};var N=a(77977);function x({navModel:s}){return e.createElement(d.T,{navModel:s},e.createElement(d.T.Contents,null,e.createElement(N.ServerStats,null),e.createElement(A,{editionNotice:`You are running the open-source version of Grafana.
+        You have to install the Enterprise edition in order enable Enterprise features.`})))}const T={fontWeight:500,fontSize:"26px",lineHeight:"123%"},A=({editionNotice:s})=>{const l=(0,u.wW)(U);return e.createElement(e.Fragment,null,e.createElement("h2",{className:l.title},"Enterprise license"),e.createElement(P,{header:"Grafana Enterprise",subheader:"Get your free trial",editionNotice:s},e.createElement("div",{className:l.column},e.createElement(f,null),e.createElement(c,null))))},U=s=>({column:(0,r.css)`
+      display: grid;
+      grid-template-columns: 100%;
+      column-gap: 20px;
+      row-gap: 40px;
+
+      @media (min-width: 1050px) {
+        grid-template-columns: 50% 50%;
+      }
+    `,title:(0,r.css)`
+      margin: ${s.spacing(4)} 0;
+    `}),n=()=>e.createElement("div",{style:{marginTop:"40px",marginBottom:"30px"}},e.createElement("h2",{style:T},"Get Grafana Enterprise"),e.createElement(v,null),e.createElement("p",{style:{paddingTop:"12px"}},"You can use the trial version for free for 30 days. We will remind you about it five days before the trial period ends.")),v=()=>e.createElement(g.Qj,{variant:"primary",size:"lg",href:"https://grafana.com/contact?about=grafana-enterprise&utm_source=grafana-upgrade-page"},"Contact us and get a free trial"),c=()=>e.createElement("div",null,e.createElement("h4",null,"At your service"),e.createElement(m,null,e.createElement(t,{title:"Enterprise Plugins",image:"public/img/licensing/plugin_enterprise.svg"}),e.createElement(t,{title:"Critical SLA: 2 hours",image:"public/img/licensing/sla.svg"}),e.createElement(t,{title:"Unlimited Expert Support",image:"public/img/licensing/customer_support.svg"},"24 x 7 x 365 support via",e.createElement(m,{nested:!0},e.createElement(t,{title:"Email"}),e.createElement(t,{title:"Private Slack channel"}),e.createElement(t,{title:"Phone"}))),e.createElement(t,{title:"Hand-in-hand support",image:"public/img/licensing/handinhand_support.svg"},"in the upgrade process")),e.createElement("div",{style:{marginTop:"20px"}},e.createElement("strong",null,"Also included:"),e.createElement("br",null),"Indemnification, working with Grafana Labs on future prioritization, and training from the core Grafana team."),e.createElement(n,null)),f=()=>e.createElement("div",{style:{paddingRight:"11px"}},e.createElement("h4",null,"Enhanced functionality"),e.createElement(o,null)),o=()=>e.createElement(m,null,e.createElement(t,{title:"Data source permissions"}),e.createElement(t,{title:"Reporting"}),e.createElement(t,{title:"SAML authentication"}),e.createElement(t,{title:"Enhanced LDAP integration"}),e.createElement(t,{title:"Team Sync"},"LDAP, GitHub OAuth, Auth Proxy, Okta"),e.createElement(t,{title:"White labeling"}),e.createElement(t,{title:"Auditing"}),e.createElement(t,{title:"Settings updates at runtime"}),e.createElement(t,{title:"Grafana usage insights"},e.createElement(m,{nested:!0},e.createElement(t,{title:"Sort dashboards by popularity in search"}),e.createElement(t,{title:"Find unused dashboards"}),e.createElement(t,{title:"Dashboard usage stats drawer"}),e.createElement(t,{title:"Dashboard presence indicators"}))),e.createElement(t,{title:"Enterprise plugins"},e.createElement(m,{nested:!0},e.createElement(t,{title:"Oracle"}),e.createElement(t,{title:"Splunk"}),e.createElement(t,{title:"Service Now"}),e.createElement(t,{title:"Dynatrace"}),e.createElement(t,{title:"New Relic"}),e.createElement(t,{title:"DataDog"}),e.createElement(t,{title:"AppDynamics"}),e.createElement(t,{title:"SAP HANA\xAE"}),e.createElement(t,{title:"Gitlab"}),e.createElement(t,{title:"Honeycomb"}),e.createElement(t,{title:"Jira"}),e.createElement(t,{title:"MongoDB"}),e.createElement(t,{title:"Salesforce"}),e.createElement(t,{title:"Snowflake"}),e.createElement(t,{title:"Wavefront"})))),m=({children:s,nested:l})=>{const i=(0,r.css)`
+    display: flex;
+    flex-direction: column;
+    padding-top: 8px;
+
+    > div {
+      margin-bottom: ${l?0:8}px;
+    }
+  `;return e.createElement("div",{className:i},s)},t=({children:s,title:l,image:i})=>{const y=i||"public/img/licensing/checkmark.svg",S=(0,r.css)`
+    display: flex;
+
+    > img {
+      display: block;
+      height: 22px;
+      flex-grow: 0;
+      padding-right: 12px;
+    }
+  `,L=(0,r.css)`
+    font-weight: 500;
+    line-height: 1.7;
+  `;return e.createElement("div",{className:S},e.createElement("img",{src:y,alt:""}),e.createElement("div",null,e.createElement("div",{className:L},l),s))},G=s=>({navModel:(0,p.ht)(s.navIndex,"upgrading")}),I=(0,b.connect)(G)(x)}}]);
+
+//# sourceMappingURL=7329.3357c1e1ef632edbe404.js.map
