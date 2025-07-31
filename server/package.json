@@ -1,20 +1,32 @@
 {
-  "name": "server",
+  "name": "portfolio-management-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "Portfolio Management API Server",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "PORT=6050 HTTPS=false HTTP=true node --no-deprecation index.js",
     "start:https": "PORT=6051 HTTPS=true HTTP=false node --no-deprecation index.js",
+    "start:prod": "NODE_ENV=production PORT=6050 HTTPS=false HTTP=true node --no-deprecation index.js",
+    "start:prod:https": "NODE_ENV=production PORT=6051 HTTPS=true HTTP=false node --no-deprecation index.js",
     "dev": "nodemon --no-deprecation index.js",
     "dev:https": "HTTPS=true HTTP=false nodemon --no-deprecation index.js",
-    "seed": "node --no-deprecation seed.js"
+    "seed": "node --no-deprecation seed.js",
+    "build": "echo 'No build step required for Node.js server'",
+    "postinstall": "prisma generate",
+    "db:migrate": "prisma migrate deploy",
+    "db:seed": "node --no-deprecation seed.js",
+    "db:reset": "prisma migrate reset --force",
+    "db:studio": "prisma studio"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["portfolio", "management", "api", "finance", "stocks"],
+  "author": "Abhijit Desai",
   "license": "ISC",
   "type": "commonjs",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
   "dependencies": {
     "@prisma/client": "^6.11.1",
     "@sendgrid/mail": "^8.1.5",

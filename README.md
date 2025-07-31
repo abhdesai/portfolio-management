@@ -68,8 +68,9 @@ Cursor Portfolio Management/
 ## Setup Instructions
 
 ### Prerequisites
-- Node.js (v16 or higher)
+- Node.js (v18 or higher)
 - npm or yarn
+- Docker and Docker Compose (for production deployment)
 
 ### Backend Setup
 1. Navigate to the server directory:
@@ -172,6 +173,32 @@ http://localhost:6050/api-docs
 3. Make your changes
 4. Test thoroughly
 5. Submit a pull request
+
+## Production Deployment
+
+For production deployment, see [DEPLOYMENT.md](./DEPLOYMENT.md) for comprehensive instructions.
+
+### Quick Production Start
+```bash
+# Clone the repository
+git clone https://github.com/abhdesai/portfolio-management.git
+cd portfolio-management
+
+# Deploy with Docker Compose
+chmod +x deploy.sh
+./deploy.sh
+```
+
+### Production Features
+- ✅ Docker containerization
+- ✅ PostgreSQL database
+- ✅ Nginx reverse proxy
+- ✅ SSL/HTTPS support
+- ✅ Health checks
+- ✅ Environment configuration
+- ✅ Database migrations
+- ✅ Security hardening
+- ✅ Performance optimization
 
 ## License
 

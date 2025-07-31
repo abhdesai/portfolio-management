@@ -1,6 +1,7 @@
 {
-  "name": "client",
-  "version": "0.1.0",
+  "name": "portfolio-management-client",
+  "version": "1.0.0",
+  "description": "Portfolio Management React Client",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -34,8 +35,11 @@
     "start": "cross-env HTTPS=false PORT=6060 react-scripts start",
     "start:https": "cross-env HTTPS=true SSL_CRT_FILE=localhost+2.pem SSL_KEY_FILE=localhost+2-key.pem PORT=6061 react-scripts start",
     "build": "react-scripts build",
+    "build:prod": "GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test:ci": "react-scripts test --watchAll=false --coverage",
+    "eject": "react-scripts eject",
+    "analyze": "npm run build && npx serve -s build -l 3000"
   },
   "eslintConfig": {
     "extends": [
@@ -44,6 +48,10 @@
     ]
   },
   "proxy": "",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
   "browserslist": {
     "production": [
       ">0.2%",

@@ -1,7 +1,13 @@
 require('dotenv').config();
 
+// Load production config if in production
+const productionConfig = process.env.NODE_ENV === 'production' ? require('./config/production.js') : null;
+
 // Server configuration
 const config = {
+  // Environment
+  isProduction: process.env.NODE_ENV === 'production',
+  
   // Protocol configuration
   isHttp: process.env.HTTP === 'true',
   isHttps: process.env.HTTPS === 'true',
@@ -29,6 +35,11 @@ const config = {
     legacyHeaders: false,
   }
 };
+
+// Override with production config if available
+if (productionConfig) {
+  Object.assign(config, productionConfig);
+}
 
 // Set ports based on protocol
 if (config.isHttp) {
