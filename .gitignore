@@ -34,6 +34,9 @@ server/uploads/
 server-monitoring/grafana-v10.2.3/bin/
 server-monitoring/prometheus-2.48.0.darwin-amd64/
 
+# Grafana files with potential secrets
+server-monitoring/grafana-v10.2.3/public/api-enterprise-spec.json
+
 # SSL certificates
 *.pem
 *.key
